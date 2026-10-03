@@ -1,4 +1,5 @@
 from src.parse_pdf import parse_arg, extract_text_from_pdf
+from src.embedding import embedding_similarity
 
 
 def  chunk_by_char(text, chunk_size=150, chunk_overlap=20):
@@ -21,8 +22,9 @@ def  chunk_by_char(text, chunk_size=150, chunk_overlap=20):
 def  main():
     arg = parse_arg()
     text = extract_text_from_pdf(arg.pdf_path)
-    chunks = chunk_by_char(text.decode("utf-8"))
-    print(chunks)
+    chunks = chunk_by_char(text)
+    embedding_similarity(chunks)
+    
 
 
 if __name__ == "__main__":

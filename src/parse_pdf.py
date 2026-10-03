@@ -12,11 +12,14 @@ def  parse_arg() -> argparse.Namespace:
 
 def  extract_text_from_pdf(pdf_path: str) -> str:
     doc = pymupdf.open(pdf_path) # open a document
-    out = open("output.txt", "wb") # create a text output
-    for page in doc: # iterate the document pages
-        text = page.get_text().encode("utf8") # get plain text (is in UTF-8)
-        out.write(text) # write text of page
-        out.write(bytes((12,))) # write page delimiter (form feed 0x0C)
-    out.close()
+    pages = []
+
+    with open("output.txt", "w", encoding="utf-8") as out:
+        for page in doc: # iterate the document pages
+            page_text = page.get_text()
+            pages.append(page_text)
+            out.write(page_text)
+            out.write("\f") # page delimiter (form feed 0x0C)
+
     doc.close()
-    return text
+    return "\f".join(pages)
