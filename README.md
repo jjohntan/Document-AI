@@ -1,1 +1,18 @@
-# Document-AI
+# Document-AI — PDF Question Answering System
+
+Built an end-to-end RAG application that allows users to upload PDF documents and ask questions about their contents. The system extracts and chunks document text, generates embeddings, stores them in a vector database, retrieves relevant context through semantic search, and uses an LLM to generate grounded answers
+
+## dependensies
+pip install -r requirements.txt
+
+## file structure
+
+
+## Reference
+https://docs.python.org/3/library/argparse.html#type
+https://academy.claude.com/courses/building-with-the-claude-api/text-chunking-strategies
+https://sbert.net/
+https://huggingface.co/sentence-transformers
+https://www.reddit.com/r/Rag/comments/1i5rpyd/for_an_absolute_beginner_which_is_the_vector/
+https://medium.com/@yashpaliwal42/simple-rag-retrieval-augmented-generation-implementation-using-faiss-and-openai-2a74775b17c3
+https://medium.com/@aymen.besbes/build-your-first-retrieval-augmented-generation-rag-system-with-faiss-sentence-transformers-and-200a8db91517
