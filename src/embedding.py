@@ -1,17 +1,16 @@
-from operator import index
-
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
 
-class Retriever:
-    def __init__(self, model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
+class VectorStore:
+    def __init__(self, _chunks=None):
         # 1. Load a pretrained Sentence Transformer model
-        self.model = SentenceTransformer(model_name)
+        self.model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
         self.index = None
+        self.chunks = _chunks
 
-    def  embedding_similarity(self, sentences):
+    def  embedding_similarity(self):
 
         # The sentences to encode
         # sentences = [
@@ -21,7 +20,7 @@ class Retriever:
         # ]
 
         # 2. Calculate embeddings by calling model.encode()
-        embeddings = self.model.encode(sentences)
+        embeddings = self.model.encode(self.chunks)
         # [3, 384]
 
         # 3. Calculate the embedding similarities
@@ -39,3 +38,16 @@ class Retriever:
 
         # Add embeddings to the index
         self.index.add(np.array(embeddings))
+
+    def  retrieve(self, query, top_k=3):
+
+        query_embedding = self.model.encode([query])
+
+        distances, indices = self.index.search(query_embedding, top_k)
+
+        results = []
+
+        for i in indices[0]:
+            results.append(self.chunks[i])
+
+        return results
