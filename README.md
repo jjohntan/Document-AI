@@ -5,8 +5,8 @@ Built an end-to-end RAG application that allows users to upload PDF documents an
 ### Clone repository
 
 ```bash
-git clone https://github.com/jjohntan/Document-AI-RAG
-cd Document-AI-RAG
+git clone https://github.com/jjohntan/document-ai-rag
+cd document-ai-rag
 ```
 
 ### dependensies
@@ -19,6 +19,21 @@ pip install -r requirements.txt
 ```
 
 ### file structure
+
+```bash
+document-ai-rag/
+├── data/
+│   └── example.pdf
+├── src/
+│   ├── __main__.py
+│   ├── chunking.py
+│   ├── gen_prompt.py
+│   ├── parser.py
+│   └── vector_store.py
+├── .env
+├── README.md 
+└── requirements.txt
+```
 
 
 ### Reference
