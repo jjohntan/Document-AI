@@ -50,4 +50,4 @@ class VectorStore:
         for i in indices[0]:
             results.append(self.chunks[i])
 
-        return results
+        return "\n\n".join(results)
