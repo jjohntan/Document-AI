@@ -1,18 +1,35 @@
 from src.parser import parse_arg, extract_text_from_pdf
 from src.chunking import chunk_by_char
-from src.embedding import VectorStore
+from vector_store import VectorStore
+from gen_prompt import generate_prompt
+from google import genai
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
 
 
 def main() -> None:
     arg = parse_arg()
+
+    user_query = arg.prompt
+    
     text = extract_text_from_pdf(arg.pdf_path)
     chunks = chunk_by_char(text)
     retriever = VectorStore(chunks)
     retriever.embedding_similarity()
-    query = "What is the total amount of the invoice?"
-    context = retriever.retrieve(query)
-    print(f'retrieve result: {context}')
+    result = retriever.search(user_query)
+    print(f'search result: {result}')
+    prompt = generate_prompt(user_query, result)
+    print(f'prompt: {prompt}')
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
+    interaction = client.interactions.create(
+    model="gemini-3.5-flash-lite",
+    input=prompt
+    )
+    print(interaction.output_text)
 
 
 if __name__ == "__main__":
