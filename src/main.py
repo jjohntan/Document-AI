@@ -1,7 +1,7 @@
 from src.parser import parse_arg, extract_text_from_pdf
 from src.chunking import chunk_by_char
-from vector_store import VectorStore
-from gen_prompt import generate_prompt
+from src.vector_store import VectorStore
+from src.gen_prompt import generate_prompt
 from google import genai
 from dotenv import load_dotenv
 import os
@@ -14,7 +14,7 @@ def main() -> None:
     arg = parse_arg()
 
     user_query = arg.prompt
-    
+
     text = extract_text_from_pdf(arg.pdf_path)
     chunks = chunk_by_char(text)
     retriever = VectorStore(chunks)

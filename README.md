@@ -9,16 +9,16 @@ git clone https://github.com/jjohntan/document-ai-rag
 cd document-ai-rag
 ```
 
-### dependensies
+### Dependensies
 
-```
+```bash
 python -m venv venv
 source venv/bin/activate    # Linux
 
 pip install -r requirements.txt
 ```
 
-### file structure
+### File structure
 
 ```bash
 document-ai-rag/
@@ -34,7 +34,6 @@ document-ai-rag/
 ├── README.md 
 └── requirements.txt
 ```
-
 
 ### Reference
 https://docs.python.org/3/library/argparse.html#type

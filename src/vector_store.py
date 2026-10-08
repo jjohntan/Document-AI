@@ -39,10 +39,12 @@ class VectorStore:
         # Add embeddings to the index
         self.index.add(np.array(embeddings))
 
+
     def  search(self, query, top_k=3):
 
         query_embedding = self.model.encode([query])
 
+        # Vector search
         distances, indices = self.index.search(query_embedding, top_k)
 
         results = []
