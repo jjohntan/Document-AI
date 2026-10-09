@@ -20,5 +20,4 @@ def  extract_text_from_pdf(pdf_path: str):
         pages.append(page_text)
 
     doc.close()
-    "\f".join(pages)# page delimiter form feed 0x0C
-    return (pages)
+    return "\f".join(pages) # page delimiter form feed 0x0C
