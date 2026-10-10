@@ -1,10 +1,10 @@
-def  chunk_by_char(text, chunk_size=150, chunk_overlap=20):
+def  chunk_by_char(text, chunk_size=800, chunk_overlap=150):
     chunks = []
     start_idx = 0
     
     while start_idx < len(text):
         end_idx = min(start_idx + chunk_size, len(text))
-        print(f"start index: {start_idx} end index: {end_idx} length: {len(text)}")
+        # print(f"start index: {start_idx} end index: {end_idx} length: {len(text)}")
         chunk_text = text[start_idx:end_idx]
         chunks.append(chunk_text)
         

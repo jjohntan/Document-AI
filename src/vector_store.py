@@ -11,6 +11,7 @@ class VectorStore:
         self.index = None
         self.chunks = _chunks
 
+
     def  encode_similarity(self):
 
         # The sentences to encode
@@ -40,7 +41,7 @@ class VectorStore:
         self.index.add(np.array(embeddings))
 
 
-    def  search(self, query, top_k=3):
+    def  search(self, query, top_k=5):
 
         query_embedding = self.model.encode([query])
 
