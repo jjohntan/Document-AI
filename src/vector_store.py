@@ -10,7 +10,7 @@ class VectorStore:
         self.index = None
         self.chunks = _chunks
 
-    def  embedding_similarity(self):
+    def  encode_similarity(self):
 
         # The sentences to encode
         # sentences = [
@@ -24,7 +24,7 @@ class VectorStore:
         # [3, 384]
 
         # 3. Calculate the embedding similarities
-        similarities = self.model.similarity(embeddings, embeddings)
+        # similarities = self.model.similarity(embeddings, embeddings)
         # tensor([[1.0000, 0.6660, 0.1046],
         #         [0.6660, 1.0000, 0.1411],
         #         [0.1046, 0.1411, 1.0000]])

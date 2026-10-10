@@ -18,7 +18,7 @@ def main() -> None:
     text = extract_text_from_pdf(arg.pdf_path)
     chunks = chunk_by_char(text)
     retriever = VectorStore(chunks)
-    retriever.embedding_similarity()
+    retriever.encode_similarity()
     result = retriever.search(user_query)
     # print(f'search result: {result}')
     prompt = generate_prompt(user_query, result)
