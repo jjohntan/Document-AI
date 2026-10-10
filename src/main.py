@@ -26,7 +26,7 @@ def main() -> None:
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     interaction = client.interactions.create(
-    model="gemini-3.5-flash-lite",
+    model=os.getenv("MODEL"),
 
     input=prompt
     )

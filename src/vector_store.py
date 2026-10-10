@@ -1,12 +1,13 @@
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
+import os
 
 
 class VectorStore:
     def __init__(self, _chunks=None):
         # 1. Load a pretrained Sentence Transformer model
-        self.model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+        self.model = SentenceTransformer(os.getenv("EMBEDDING_MODEL"))
         self.index = None
         self.chunks = _chunks
 
