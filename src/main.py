@@ -20,13 +20,14 @@ def main() -> None:
     retriever = VectorStore(chunks)
     retriever.embedding_similarity()
     result = retriever.search(user_query)
-    print(f'search result: {result}')
+    # print(f'search result: {result}')
     prompt = generate_prompt(user_query, result)
-    print(f'prompt: {prompt}')
+    # print(f'prompt: {prompt}')
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     interaction = client.interactions.create(
     model="gemini-3.5-flash-lite",
+
     input=prompt
     )
     print(interaction.output_text)

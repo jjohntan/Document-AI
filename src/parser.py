@@ -16,8 +16,10 @@ def  extract_text_from_pdf(pdf_path: str):
     pages = []
 
     for page in doc: # iterate the document pages
-        page_text = page.get_text()
+        page_text = page.get_text()# all text of the page
         pages.append(page_text)
 
     doc.close()
-    return "\f".join(pages) # page delimiter form feed 0x0C
+    full_page = "\f".join(pages) # page delimiter form feed 0x0C
+    
+    return full_page

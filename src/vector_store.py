@@ -28,7 +28,6 @@ class VectorStore:
         # tensor([[1.0000, 0.6660, 0.1046],
         #         [0.6660, 1.0000, 0.1411],
         #         [0.1046, 0.1411, 1.0000]])
-        print(similarities)
 
         # Get embedding dimension
         dimension = embeddings.shape[1]
